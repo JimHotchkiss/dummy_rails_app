@@ -50,10 +50,10 @@
     <!-- Add logout link. Move this to helper.-->
 
     <div class="container">
-      <% if session[:username].nil? %>
+      <% if session[:use_id].nil? %>
         <%= link_to 'Sign In', login_path %>
       <% else %>
-        <h3>Welcome, <%= session[:username] %></h3>
+        <h3>Welcome, <%= session[:user_id] %></h3>
         <%= link_to 'logout', logout_path, method: 'delete' %>
       <% end %>
     </div>

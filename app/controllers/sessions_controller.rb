@@ -5,14 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if !session[:username].nil? # if you're already logged in redirect_to root
+    if !session[:user_id].nil? # if you're already logged in redirect_to root
       redirect_to '/'
     else
+      # However, I have no password authentication in here
       if params[:username].nil? || params[:username] == ""
         redirect_to login_path
       else
-        username = params[:username]
-        session[:username] = username
+        user_id = params[:id]
+        session[:user_id] = user_id
         redirect_to '/'
       end
     end

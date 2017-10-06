@@ -57,3 +57,11 @@ So, I have basic login functionality, and it returns to the root. I'd like to gr
   * Also, it just dawned on me, I need to make a logout link
     ~ So, I was reminded that I can use <%= link_to login_path %>, <%= link_to logout_path, method: 'delete' %>, links, but I have to make sure I change the login route to 'delete'
 So, after lunch, take a step back, and review what I've done.
+  * Change all session[:username] to session[:user_id]
+I need to work on getting User registered or signed up.  When I convert this over to the dyi_app, do the registration first!!!  
+
+- For tomorrow, I'm going to finish the signup process (Avi's video), I'm pretty close to being done.  
+- Convert to dyi_app
+- Move these links (signin/signup) into nav background
+- CSS template
+- Start looking at Projects, Categories and Materials.  
