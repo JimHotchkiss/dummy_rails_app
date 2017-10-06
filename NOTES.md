@@ -35,8 +35,25 @@ Practice with a simple association.  User has_many :projects, and a Project belo
   * Project
     belongs_to :user ~> migration needs foreign key: user_id
 Now, do I user rails g migration, or rails g resource User
-After testing these models and their associations in rails console, 
+After testing these models and their associations in rails console,
 This association work ~> @user.projects #=> an [],
   new_project = user.projects.build(title: 'project title')
   new_project.save
   new_project # => user_id: 1
+Now, working on authentication, login/logout,
+  * Create Sessions controller
+  * RESTful routes
+  * Views
+    ~ I want the user to be greeted with their username
+    ~ If they are logged in, they will have a logout option
+    ~ If they are not, they will have a login/signup option
+So, take a step back.  I created a Sessions controller, and wired up the correct routes.  I will work on the form_for, to get a user signed in.  
+  * However, I may need to pause, go back and do signup first.  
+  ** Going to change routes from 'users/login' to just login
+  ** So, I can't use form_for @user, because this creates a post request for controller: Users, and action: new.  
+  ** I'm going to use for_tag.  
+So, I have basic login functionality, and it returns to the root. I'd like to greet the user with their username, provided they are logged in.  
+  * I think this will be my first helper, so I can abstract away the logic from the root view.  
+  * Also, it just dawned on me, I need to make a logout link
+    ~ So, I was reminded that I can use <%= link_to login_path %>, <%= link_to logout_path, method: 'delete' %>, links, but I have to make sure I change the login route to 'delete'
+So, after lunch, take a step back, and review what I've done.
