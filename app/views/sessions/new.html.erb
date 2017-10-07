@@ -1,8 +1,10 @@
 <!-- new login -->
 <div class="container">
   <%= form_tag({controller: 'sessions', action: 'new', method: 'POST'}) do %>
+    <%= label_tag :username  %>
     <input type="text" name="username">
-    <input type="text" name="password">
-    <input type="submit" name="login">
+    <%= label_tag :username  %>
+    <input type="password" name="password"><br>
+    <input type="submit" name="login" value="Sign in">
   <% end %>
 </div>

@@ -17,5 +17,12 @@ Signup
   * I'm going to add bcrypt and has_secure_password now so I can get the password_confirmation
     ~ Need to add password_digest to User attributes
     ~ I will not need validates :password, it comes with basic validations
-  * Adding strong params to user controller 
-  * Also, I want to raise validation errors, and render them to the user.  
+  * Adding strong params to user controller
+  * Also, I want to raise validation errors, and render them to the user.
+
+So, I've run into a problem. Even with validates in place, the user is still allowed to be instantiated (signup).  
+    * @user.errors.messages[:username]
+Okay, figured out what I was doing, I needed to ask, in my if-statement, if the @user.save, ot try and save it before the if-statement.
+
+I was having a problem with the nav bar and getting the stylistic choice that I wanted. I made some changes, namely, one of them being my routes
+  * delete 'session/logout', to: 'sessions#destroy'.  I was leaving off the 'session', in 'session/logout'

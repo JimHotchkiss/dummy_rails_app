@@ -65,3 +65,10 @@ I need to work on getting User registered or signed up.  When I convert this ove
 - Move these links (signin/signup) into nav background
 - CSS template
 - Start looking at Projects, Categories and Materials.  
+
+Added password_confirmation to my signup views, model and strong params, in the User controller.  
+
+So, I've the signup working. I am going to refactor a bit to get signin/signout, signup in the nav bar.  
+  * I want DYI ~ to be root
+  * I want a signin or sigup option for user if they are not logged in
+  * Okay, at this point I do want to make a current_user method.  

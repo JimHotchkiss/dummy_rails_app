@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects, :only =>[:new]
 
   # Authentication routes
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
-  delete '/logout' => 'sessions#destroy'
+  get 'session/login' => 'sessions#new'
+  post 'session/login' => 'sessions#create'
+  delete 'session/logout' => 'sessions#destroy'
 end
