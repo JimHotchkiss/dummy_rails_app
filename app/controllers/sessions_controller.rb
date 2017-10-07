@@ -1,26 +1,24 @@
 class SessionsController < ApplicationController
 
   def new
-    @user = User.new
   end
 
   def create
-    if !session[:user_id].nil? # if you're already logged in redirect_to root
+    if session[:username].present? # if you're already logged in redirect_to root
       redirect_to '/'
-    else
+    end
       # However, I have no password authentication in here
       if params[:username].nil? || params[:username] == ""
-        redirect_to login_path
+        render :new
       else
-        user_id = params[:id]
-        session[:user_id] = user_id
+        username = params[:username]
+        session[:username] = username
         redirect_to '/'
       end
-    end
   end
 
   def destroy
-    session.delete :user_id
+    session.delete :username
     redirect_to '/'
   end
 end
