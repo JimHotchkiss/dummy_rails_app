@@ -72,3 +72,8 @@ So, I've the signup working. I am going to refactor a bit to get signin/signout,
   * I want DYI ~ to be root
   * I want a signin or sigup option for user if they are not logged in
   * Okay, at this point I do want to make a current_user method.  
+Must be tired. After wrestling with signin and signout in the nav and sessions controller, I think I got it working pretty well
+
+I'm going to create the Project, Category and ProjectCategory migrations, models and when necessary, controllers.  
+
+It seems, I have the associations wired up appropriately.  

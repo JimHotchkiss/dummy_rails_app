@@ -26,8 +26,8 @@
               <a class="nav-link" href="/">DYI <span class="sr-only">(current)</span></a>
             </li>
 
-            <!-- signin/signup if user is not logged in-->
-            <% if session[:username].present? %>
+            <!-- signin/signup if user is not logged in: this needs to be moved-->
+            <% if logged_in? %>
               <li class="nav-item"><%= link_to 'Sign out', session_logout_path, method: 'DELETE', class: 'nav-link' %></li>
             <% else %>
               <li class="nav-item"><%= link_to 'Sign in', session_login_path, class: 'nav-link' %></li>
@@ -55,7 +55,12 @@
       </nav>
     </nav> <!-- end of 'class="navbar navbar-light"'-->
 
-    <!-- Add logout link. Move this to helper.-->
+      <!-- Greet user: this needs to be moved-->
+      <div class="container">
+        <% if logged_in? %>
+          <h3>Welcome, <%= current_user.username %></h3>
+        <% end %>
+      </div>
 
     <%= yield %>
 
