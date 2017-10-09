@@ -2,10 +2,23 @@
 __________________________________________________________________________________________________________________________________________________________
 
 Categories:
-<% @project.categories.each do |category| %>
-  <%= category.name %> |
+<% @project.categories.each do |category| %> |
+  <%= link_to category.name, category_path(category) %>
 <% end %>
 <br></br>
 
 Title: <%= @project.title %><br></br>
 Description: <%= @project.description %><br></br>
+
+<div class="container" style="border : solid 2px #ff0000; color:blue; padding : 4px; width : 800px; height : 200px; overflow : auto; ">
+1<br />
+2<br />
+3<br />
+4<br />
+5<br />
+6<br />
+7<br />
+8<br />
+9<br />
+10<br />
+</div>

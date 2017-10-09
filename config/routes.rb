@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :categories, :only => [:show]
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'projects#index'
 
-  resources :category, only: [:show] do
-    resources :projects, only: [:show, :index]
-    # this will give the user the ability to search
-    # categories/:id/projects or categories/:id/projects/:id
-    # nested resource for posts
-  end
+
 
   resources :users, :only => [:new, :create]
   resources :projects, :only =>[:index, :new, :create, :show, :edit, :updated, :delete]

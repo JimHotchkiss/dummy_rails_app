@@ -6,17 +6,23 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username])
 
-    if logged_in? # if you're already logged in redirect_to root
+    if logged_in?
+      redirect_to '/'
+
+    elsif params[:username].nil? || params[:username] == ""
+      flash[:notice] = "Please complete login form"
+      redirect_to session_login_path
+
+    elsif @user.nil?
+      flash[:notice] = "You need to signup"
+      redirect_to '/'
+
+    else
+      return redirect_to '/' unless @user.authenticate(params[:password])
+      user_id = @user.id
+      session[:user_id] = user_id
       redirect_to '/'
     end
-      # However, I have no password authentication in here
-      if params[:username].nil? || params[:username] == ""
-        render :new
-      else
-        user_id = @user.id
-        session[:user_id] = user_id
-        redirect_to '/'
-      end
   end
 
   def destroy
