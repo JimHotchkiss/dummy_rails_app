@@ -161,4 +161,18 @@ In rails c, all the association work. I can use the method .build, I can call @p
 ~ However, I still can't get a @project object to correctly persist with attributes.  
     * Okay, got the collection_check_boxes to persist, after breakfast, I'll work on entering unique category.  
 
-Okay, now add the nested attributes 
+Okay, now add the nested attributes
+
+Got it! So the nest attributes is working. I can choose a category from a list of checkboxes, and I can create a unique category.  
+
+So, what do I want to do next.  
+  * I think I'm ready to apply this to the dyi_app
+
+Going to add some styling to the form, with a bootstrap helper gem, and then I will work on link_to categories and projects.  
+
+Bootstrap form_for
+  * gem 'bootstrap_form'
+  * application.css ~>
+  /*
+  *= require rails_bootstrap_forms
+  */

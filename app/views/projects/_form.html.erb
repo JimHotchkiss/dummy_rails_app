@@ -1,25 +1,14 @@
 <div class="container">
-  <%= form_for @project do |f| %>
-    <p>
-      <%= f.label "Title:" %>
-      <%= f.text_field :title %>
-    </p>
+  <%= bootstrap_form_for(@project) do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :description %>
 
-    <p>
-      <%= f.label "Description:" %>
-      <%= f.text_area :description %>
-    </p>
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
 
-    <p>
-      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-    </p>
-
-    <p>
-      <%= f.fields_for :categories, @project.categories.build do |categories_fields| %>
-        <%= f.label "Category:" %>
-        <%= categories_fields.text_field :name %>
-      <% end %>
-    </p>
+    <%= f.fields_for :categories, @project.categories.build do |categories_fields| %>
+      <%= f.label "Category:" %>
+      <%= categories_fields.text_field :name %>
+    <% end %>
 
     <%= f.submit %>
   <% end %>
