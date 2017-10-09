@@ -1,10 +1,11 @@
-Title:
-<%= @project.title %><br>
-Description:
-<%= @project.description %>
+
+__________________________________________________________________________________________________________________________________________________________
+
 Categories:
 <% @project.categories.each do |category| %>
-<ul>
-  <p><%= category.name %></p>
-</ul>
+  <%= category.name %> |
 <% end %>
+<br></br>
+
+Title: <%= @project.title %><br></br>
+Description: <%= @project.description %><br></br>

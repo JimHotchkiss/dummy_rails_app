@@ -172,7 +172,22 @@ Going to add some styling to the form, with a bootstrap helper gem, and then I w
 
 Bootstrap form_for
   * gem 'bootstrap_form'
-  * application.css ~>
-  /*
-  *= require rails_bootstrap_forms
-  */
+  * application.css ~> require rails_bootstrap_forms
+
+Looks good.  
+
+So, as of now, I have a DIY app, that a user can visit, sign up, or login, and create a project.
+  * On the index page there is a list of projects and categories. If the user is logged in, they can click to see the details of the project. They also can click on a category, and see a list of projects associated with that category (Going to build that functionality today)
+  * I need to double check the nest resources, and make sure that they are correctly applied.
+  * I still need to omniauth (Github)
+  * And validation warnings.
+
+1. Index page should list all projects and categories. A project with have a link_to so the user can see more details.
+2. Also, the index page will have a list of category links. Each link will take the user to a category show page. One the Category show page will be list of projects associated with that category, each project will be a link to the details of that project.
+    * So I think I got the main stuff wired up.  I want to style it a bit.
+
+~ I also need to include the users ability to edit their project.
+~ I need to make a project template.
+~ Also, authentication for login, signup
+
+Okay, right now, I've just cleaned it up a bit, made it as simple as possible. I want to now git the user the a link, or button, to 'create a project'

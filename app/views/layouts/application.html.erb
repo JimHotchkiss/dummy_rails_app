@@ -30,26 +30,10 @@
             <% if logged_in? %>
               <li class="nav-item"><%= link_to 'Sign out', session_logout_path, method: 'DELETE', class: 'nav-link' %></li>
             <% else %>
+              <li class="nav-item"><%= link_to 'Sign up', new_user_path, class: 'nav-link' %></li>
               <li class="nav-item"><%= link_to 'Sign in', session_login_path, class: 'nav-link' %></li>
               <a class="navbar-brand" href="#"><i class="fa fa-github" style="font-size:36px;color:red"></i></i></a>
-              <li class="nav-item"><%= link_to 'Sign up', new_user_path, class: 'nav-link' %></li>
             <% end %>
-
-            <!-- this will be the category dropdown-menu -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-              </a>
-
-              <!-- loop to add category link-->
-              <!-- loop through categories, enterpolate url, categories/:id, category.name-->
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li><!-- end of dropdown nav-->
-
           </ul>
         </div>
       </nav>
@@ -58,7 +42,7 @@
       <!-- Greet user: this needs to be moved-->
       <div class="container">
         <% if logged_in? %>
-          <h3>Welcome, <%= current_user.username %></h3>
+          <p>Welcome, <%= current_user.username %></p>
         <% end %>
       </div>
 

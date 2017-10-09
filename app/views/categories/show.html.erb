@@ -1,0 +1,14 @@
+<div class="container">
+  <p style="color:red">Category Show Page</p>
+</div>
+
+<!-- move to partial -->
+<div class="container">
+  <%= @category.name %>:
+</div>
+
+<div class="container">
+  <% @category.projects.each do |project| %>
+  <li><%= link_to project.title, project_path(project) %></li>
+  <% end %>
+</div>

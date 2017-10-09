@@ -1,7 +1,28 @@
-<h1>Project Root Page</h1>
+
+<!-- this needs to be put in a partial -->
 <div class="container">
-  <p>Search projects by category:</p>
+  <p style="color:red" >Search projects by category:</p>
   <% Category.all.each do |category| %>
-   <%= category.name %>,
+    <% if logged_in? %>
+      <%= link_to category.name, category_path(category) %> |
+    <% else %>
+      <%= category.name %> |
+    <% end %>
+  <% end %>
+</div>
+
+<!-- this needs to be put in a partial -->
+<div class="container">
+  __________________________________________________________________________________________________________________________________________________________
+</div>
+
+<div class="container">
+  <p style="color:red">List of Projects:</p>
+  <% @projects.each do |project| %>
+    <% if logged_in? %>
+      <p><%= link_to project.title, project_path(project) %></p>
+    <% else %>
+      <p><%= project.title %></p>
+    <% end %>
   <% end %>
 </div>
