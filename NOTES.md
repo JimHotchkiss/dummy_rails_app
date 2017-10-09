@@ -160,3 +160,5 @@ So, I'm back at the original problem: getting nested attributes to persist.
 In rails c, all the association work. I can use the method .build, I can call @project.categories, I can call @category.projects, and this all works perfect.
 ~ However, I still can't get a @project object to correctly persist with attributes.  
     * Okay, got the collection_check_boxes to persist, after breakfast, I'll work on entering unique category.  
+
+Okay, now add the nested attributes 
