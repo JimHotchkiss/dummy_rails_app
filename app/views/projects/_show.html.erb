@@ -1,0 +1,10 @@
+Title:
+<%= @project.title %><br>
+Description:
+<%= @project.description %>
+Categories:
+<% @project.categories.each do |category| %>
+<ul>
+  <p><%= category.name %></p>
+</ul>
+<% end %>

@@ -77,3 +77,86 @@ Must be tired. After wrestling with signin and signout in the nav and sessions c
 I'm going to create the Project, Category and ProjectCategory migrations, models and when necessary, controllers.  
 
 It seems, I have the associations wired up appropriately.  
+So, I got the categories to print out.  I now want to link them to ?
+  * I think I need to link to a Category show page, and this show page will list out all the projects associated with that category.  
+    ~ For instance:
+      * 'auto repair' could list out
+        ~ 'Change your air filter'
+        ~ 'Change a tire'
+        ~ 'Change the oil'
+        ~ 'Replace coolant fluid'
+  * So to do this I need a Category show page.  
+  * Also, I should now starting thinking about, and looking at, nested forms and routes.  
+    ~ Read 'Routing and nested Resources'
+    ~ Nested forms
+    ~ Assigning attributes
+      * maybe it should be category/1/projects?
+        ~ categories#projects_index?
+example ~ replace author with category and category with projects, I thinking
+
+# config/routes.rb
+
+  get 'authors/:id/posts', to: 'authors#posts_index'
+  get 'authors/:id/posts/:post_id', to: 'authors#post'
+
+# authors controller
+    def posts_index
+        @author = Author.find(params[:id])
+        @posts = @author.posts
+        render template: 'posts/index'
+      end
+
+      def post
+        @author = Author.find(params[:id])
+
+        # Note that because ids are unique by table we can go directly to
+        # Post.find — no need for @author.posts.find...
+        @post = Post.find(params[:post_id])
+        render template: 'posts/show'
+      end
+
+      # config/routes.rb
+
+  Rails.application.routes.draw do
+
+    resources :authors, only: [:show] do
+      # nested resource for posts
+      resources :posts, only: [:show, :index]
+    end
+
+    resources :posts, only: [:index, :show, :new, :create, :edit, :update]
+
+    root 'posts#index'
+  end
+
+  # app/controllers/posts_controller.rb
+
+    def index
+      if params[:author_id]
+        @posts = Author.find(params[:author_id]).posts
+      else
+        @posts = Post.all
+      end
+    end
+
+    def show
+      @post = Post.find(params[:id])
+    end
+
+Okay, so I was unable to persist Project object to the db, and so I dropped and deleted the db. Going to start with project, and build out from there, testing each object along the way.  
+  * Learn something helpful: if an object won't persist, .save! will give an error.  
+
+So, my problem was that "ActiveRecord::RecordInvalid: Validation failed: User must exist", and once I got rid of validations, on the User model, the project would now persist.  
+  * Now need to figure out how to fix that.  
+  * Github response: "If you're on Rails 5, you'll need to update your user association to"
+    ~ belongs_to :user, optional: true
+
+I think I'm back in business!  
+So, I'm back at the original problem: getting nested attributes to persist.  
+  * The html that is being produced is correct.  
+  * I'm allowing nested attributes at the Project model
+  * I think it may be the params.
+
+In rails c, all the association work. I can use the method .build, I can call @project.categories, I can call @category.projects, and this all works perfect.
+~ However, I still can't get a @project object to correctly persist with attributes.  
+    * Okay, got the collection_check_boxes to persist, after breakfast, I'll work on entering unique category.  

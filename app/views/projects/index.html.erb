@@ -1,1 +1,7 @@
 <h1>Project Root Page</h1>
+<div class="container">
+  <p>Search projects by category:</p>
+  <% Category.all.each do |category| %>
+   <%= category.name %>,
+  <% end %>
+</div>
