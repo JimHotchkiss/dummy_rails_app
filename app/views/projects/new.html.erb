@@ -1,4 +1,6 @@
 <div class="container">
-  <h3>Contribute to DYI</h3>
-  <%= render 'form' %>
+  <p style="color:red">Contribute to DYI</p>
+  <%= bootstrap_form_for(@project) do |f| %>
+      <%= render 'form', f: f %>
+  <% end %>
 </div>

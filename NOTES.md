@@ -191,3 +191,6 @@ So, as of now, I have a DIY app, that a user can visit, sign up, or login, and c
 ~ Also, authentication for login, signup
 
 Okay, right now, I've just cleaned it up a bit, made it as simple as possible. I want to now git the user the a link, or button, to 'create a project'
+
+Side note: refactored the projects#new form with a partial _ form. So partials are not suppose to have any instance variables in them. So I removed all of the form_fields, leaving the |f|, and render 'form', f: f.  This says that I render the partial 'form', and that the variable f is equal to f.  
+  * I may want a partial for both the category and the project show page? 
