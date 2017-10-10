@@ -1,23 +1,27 @@
 
 __________________________________________________________________________________________________________________________________________________________
 
-Categories:
+<p style="display:inline; font-weight:bold;">Categories:</p>
 <% @project.categories.each do |category| %> |
   <%= link_to category.name, category_path(category) %>
 <% end %>
 <br></br>
 
-Title: <%= @project.title %><br></br>
-Description: <%= @project.description %><br></br>
+<p style="display:inline; font-weight:bold;">Title:</p> <%= @project.title %><br></br>
+<p style="display:inline; font-weight:bold;">Description:</p> <%= @project.description %><br></br>
+
+<% if @project.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_project_path %>
+<% end %>
 
 __________________________________________________________________________________________________________________________________________________________
 
 <%= link_to "New Comment", new_project_comment_path(@project) %>
-<p>Comments</p>
+<p style="font-weight:bold;">Comments:</p>
 <% @project.comments.each do |comment| %>
   <div class="container" style="border : solid 2px #ff0000; color:blue; padding : 4px; width : 800px; height : 200px; overflow : auto; ">
-    <li>
-     | <%= comment.description %>
-    </li>
-  </div>
+
+     ~> <%= comment.description %>
+
+  </div><br>
 <% end %>

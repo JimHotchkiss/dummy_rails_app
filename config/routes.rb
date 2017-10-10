@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
+  resources :comments, only: [:create]
   root 'projects#index'
 
-  resources :projects, only: [:show, :index] do
-    resources :comments, only: [:index, :show, :new]
+  resources :projects, only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :comments, only: [:show, :index, :new]
   end
 
-# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'session/login', to: 'sessions#new'
+  post 'session/login', to: 'sessions#create'
+  delete 'session/logout', to: 'sessions#destroy'
 
-
-
-
-  resources :users, :only => [:new, :create]
-  resources :projects, :only =>[:index, :new, :create, :show, :edit, :updated, :delete]
-  resources :categories, :only => [:show]
-  resources :comments
-  # Authentication routes
-  get 'session/login' => 'sessions#new'
-  post 'session/login' => 'sessions#create'
-  delete 'session/logout' => 'sessions#destroy'
+  resources :users
+  resources :categories
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
