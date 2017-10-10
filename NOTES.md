@@ -193,4 +193,26 @@ So, as of now, I have a DIY app, that a user can visit, sign up, or login, and c
 Okay, right now, I've just cleaned it up a bit, made it as simple as possible. I want to now git the user the a link, or button, to 'create a project'
 
 Side note: refactored the projects#new form with a partial _ form. So partials are not suppose to have any instance variables in them. So I removed all of the form_fields, leaving the |f|, and render 'form', f: f.  This says that I render the partial 'form', and that the variable f is equal to f.  
-  * I may want a partial for both the category and the project show page? 
+  * I may want a partial for both the category and the project show page?
+
+I'm adding a nested resources, by allowing the user to search projects/:id, and then make a comment on that project, with projects/:id/comments/new.  After reviewing the Modify Nested Resources, and including a 'hidden' input, I got the following nested input
+  * <%= f.hidden_field :author_id %>
+  * <input type="hidden" value="2" name="comment[project_id]" id="comment_project_id">
+
+So I did my nested resources:
+  * routes.rb
+   resources :projects, only: [:index, :show] do
+    resources :comments, only: [:show, :index, :new]
+   end
+   * I ran into a routes problem on my form page. Be sure to create a regular resource for the nested object, in this case, 'comments'
+    resources :comments ~> this will give you the seven REstful urls.  
+   * We want to make sure that, if we capture an project_id through a nested route, we keep track of it and assign the comment to that project.
+   * We also need strong params to allow us to create the nested comment under the project
+      def post_params
+        params.require(:comment).permit(:description, :project_id)
+      end
+
+What i'd like on the projects show page, under the comment(s) section, is for each comment to have a user name assigned to it.  
+  * I don't know if that is possible, if it is going to be assigned using instance variables.  
+  * Maybe I could do this with rested resources, name nested projects under users.  
+I'm going to get this first nest resources up and running, transfer it over to the dyi_app, and then come back to the dummy app.  

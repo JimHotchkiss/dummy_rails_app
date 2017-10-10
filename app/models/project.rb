@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   has_many :project_categories
   has_many :categories, through: :project_categories
   belongs_to :user, optional: true
+  has_many :comments
 
   accepts_nested_attributes_for :categories # need to write my own method for this
 

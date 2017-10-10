@@ -10,15 +10,14 @@ Categories:
 Title: <%= @project.title %><br></br>
 Description: <%= @project.description %><br></br>
 
-<div class="container" style="border : solid 2px #ff0000; color:blue; padding : 4px; width : 800px; height : 200px; overflow : auto; ">
-1<br />
-2<br />
-3<br />
-4<br />
-5<br />
-6<br />
-7<br />
-8<br />
-9<br />
-10<br />
-</div>
+__________________________________________________________________________________________________________________________________________________________
+
+<%= link_to "New Comment", new_project_comment_path(@project) %>
+<p>Comments</p>
+<% @project.comments.each do |comment| %>
+  <div class="container" style="border : solid 2px #ff0000; color:blue; padding : 4px; width : 800px; height : 200px; overflow : auto; ">
+    <li>
+     | <%= comment.description %>
+    </li>
+  </div>
+<% end %>

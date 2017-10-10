@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
 
     if logged_in?
-      redirect_to '/'
+      redirect_to root_path
 
     elsif params[:username].nil? || params[:username] == ""
       flash[:notice] = "Please complete login form"
@@ -15,18 +15,18 @@ class SessionsController < ApplicationController
 
     elsif @user.nil?
       flash[:notice] = "You need to signup"
-      redirect_to '/'
+      redirect_to root_path
 
     else
-      return redirect_to '/' unless @user.authenticate(params[:password])
+      return redirect_to root_path unless @user.authenticate(params[:password])
       user_id = @user.id
       session[:user_id] = user_id
-      redirect_to '/'
+      redirect_to root_path
     end
   end
 
   def destroy
     session.delete :user_id
-    redirect_to '/'
+    redirect_to root_path
   end
 end
