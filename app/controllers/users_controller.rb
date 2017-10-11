@@ -11,8 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = user_id
       redirect_to root_path
     else
-      # Add flash[:notice]
-      render :new
+      render :new, notice: 'Please complete form'
     end
   end
 

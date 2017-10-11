@@ -1,6 +1,7 @@
 <div class="container">
   <p style="color:blue"><%= flash[:notice] %></p>
 </div>
+
 <!-- new login -->
 <div class="container">
   <%= form_tag({controller: 'sessions', action: 'new', method: 'POST'}) do %>
@@ -10,4 +11,9 @@
     <%= password_field_tag :password%>
     <%= submit_tag :login %>
   <% end %>
-</div>
+</div><br>
+
+<div class="container">
+  <p style="display:inline; color:blue">or login in with</p> <a class="navbar-brand" href="/auth/github"><i class="fa fa-github" style="font-size:36px;color:green"></i>
+</li>
+</div><br>

@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:show, :index, :new]
   end
 
-  get 'session/login', to: 'sessions#new'
-  post 'session/login', to: 'sessions#create'
-  delete 'session/logout', to: 'sessions#destroy'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/session/login', to: 'sessions#new'
+  post '/session/login', to: 'sessions#create'
+  delete '/session/logout', to: 'sessions#destroy'
 
   resources :users
   resources :categories

@@ -32,19 +32,21 @@
             <% else %>
               <li class="nav-item"><%= link_to 'Sign up', new_user_path, class: 'nav-link' %></li>
               <li class="nav-item"><%= link_to 'Sign in', session_login_path, class: 'nav-link' %></li>
-              <a class="navbar-brand" href="#"><i class="fa fa-github" style="font-size:36px;color:blue"></i></i></a>
             <% end %>
           </ul>
         </div>
       </nav>
     </nav> <!-- end of 'class="navbar navbar-light"'-->
 
-      <!-- Greet user: this needs to be moved-->
-      <div class="container">
-        <% if logged_in? %>
-          <p>Welcome, <%= current_user.username %></p>
-        <% end %>
-      </div>
+    <!-- omniauth greeting -->
+
+
+    <!-- Greet user: this needs to be moved-->
+    <div class="container">
+      <% if logged_in? %>
+        <p>Welcome, <%= current_user.username %> <%= flash[:notice] %></p>
+      <% end %>
+    </div>
 
     <%= yield %>
 

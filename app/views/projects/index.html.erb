@@ -1,12 +1,9 @@
-<div class="container">
-  <p style="color:blue"><%= flash[:notice] %></p>
-</div>
 <!-- this needs to be put in a partial -->
 <div class="container">
   <p style="color:red" >Search projects by category:</p>
   <% Category.all.each do |category| %>
     <% if logged_in? %>
-    | <%= link_to category.name, category_path(category) %> 
+    | <%= link_to category.name, category_path(category) %>
     <% else %>
       <%= category.name %> |
     <% end %>
@@ -31,6 +28,8 @@
 
 <% if logged_in? %>
   <div class="container">
+    __________________________________________________________________________________________________________________________________________________________
+
     <%= link_to 'Contribute to DYI', new_project_path %>
   </div>
 <% end %>
