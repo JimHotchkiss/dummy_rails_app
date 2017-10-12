@@ -29,6 +29,8 @@
             <!-- signin/signup if user is not logged in: this needs to be moved-->
             <% if logged_in? %>
               <li class="nav-item"><%= link_to 'Sign out', session_logout_path, method: 'DELETE', class: 'nav-link' %></li>
+              <li class="nav-item"><%= link_to 'Contribute to DYI', new_project_path, class: 'nav-link' %></li>
+
             <% else %>
               <li class="nav-item"><%= link_to 'Sign up', new_user_path, class: 'nav-link' %></li>
               <li class="nav-item"><%= link_to 'Sign in', session_login_path, class: 'nav-link' %></li>
